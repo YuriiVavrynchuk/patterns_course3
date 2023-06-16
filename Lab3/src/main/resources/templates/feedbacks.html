@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Tripadvisor</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	
+</head>
+<body>
+
+	<div class="container my-2">
+	<h1>Feedbacks List</h1>
+	
+	<a th:href = "@{/showNewFeedbackForm}" class="btn btn-dark">Add Feedback</a>
+	
+		<table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Author</th>
+					<th>Restaurant</th>
+					<th>Rating</th>
+					<th>Feedback</th>
+					<th>Status</th>
+					<th>Date of publishing</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="feedback : ${feedbacks}">
+					<td th:text="${feedback.id}"></td>
+					<td th:text="${feedback.author.username}"></td>
+					<td th:text="${feedback.restaurant.name}"></td>
+					<td th:text="${feedback.rating}"></td>
+					<td th:text="${feedback.feedback}"></td>
+					<td th:text="${feedback.status}"></td>
+					<td th:text="${feedback.dateOfPublishing}"></td>
+					<td> 
+						<a th:href="@{/showUpdateFeedbackForm/{id}(id=${feedback.id})}" class="btn btn-dark">Update</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Tripadvisor</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Tripadvisor</h1>
+		<hr>
+		<h2>Update Feedback</h2>
+
+		<form action="#" th:action="@{/saveFeedback}" th:object="${newFeedback}" method="POST">
+			
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}" />
+			
+			<label for="author">Author ID</label>
+			<input type="number" th:field="*{author.id}" id="author" class="form-control mb-4 col-4">
+			
+			<label for="restaurant">Restaurant ID</label>
+			<input type="number" th:field="*{restaurant.id}" id="restaurant" class="form-control mb-4 col-4">
+			
+			<label for="rating">Rating</label>
+			<input type="number" step="0.01" th:field="*{rating}" id="rating" class="form-control mb-4 col-4">
+			
+			<label for="feedback">Feedback</label>
+			<input type="text" th:field="*{feedback}" id="feedback" class="form-control mb-4 col-4">
+			
+			<label for="status">Status</label>
+			<input type="text" th:field="*{status}" id="status" class="form-control mb-4 col-4">
+			
+			<label for="dateOfPublishing">Date Of Publishing</label>
+			<input type="date" th:field="*{dateOfPublishing}" id="dateOfPublishing" class="form-control mb-4 col-4">
+			
+			<button type="submit" class="btn btn-dark">Update Feedback</button>
+		</form>
+		
+		<hr>
+		
+		<a th:href = "@{/feedbacks}"> Back to Feedbacks</a>
+	</div>
+</body>
+</html>
